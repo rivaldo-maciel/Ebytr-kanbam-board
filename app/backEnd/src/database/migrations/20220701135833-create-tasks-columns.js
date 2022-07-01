@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('boards', {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('taskColumns', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,15 +12,11 @@ module.exports = {
       title: {
         allowNull: false,
         type: Sequelize.STRING
-      },
-      admin: {
-        allowNull: false,
-        type: Sequelize.STRING
       }
     });
   },
 
-  async down (queryInterface, Sequelize) {
-     await queryInterface.dropTable('boards');
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('taskColumns');
   }
 };
