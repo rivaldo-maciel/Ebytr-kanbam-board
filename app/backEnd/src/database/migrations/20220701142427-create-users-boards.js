@@ -5,12 +5,12 @@ module.exports = {
     queryInterface.createTable('usersBoards', {
       boardId: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         references: { model: 'boards', key: 'id' }
       },
       userId: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         references: { model: 'users', key: 'id' }
       }
     });
