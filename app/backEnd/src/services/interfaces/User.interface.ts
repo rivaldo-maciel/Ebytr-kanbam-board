@@ -5,5 +5,5 @@ export default interface IUserServices {
   getAll(): Promise<User[]>;
   getById(id: string): Promise<User>;
   update(id: string, user: User): Promise<User>;
-  remove(id: string): void;
+  remove(id: string): Promise<void>;
 }
