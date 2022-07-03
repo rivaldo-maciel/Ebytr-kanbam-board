@@ -9,11 +9,15 @@ class UserServices implements IUserServices {
     this._userModel = model;
   }
 
-  public async create(user: User): Promise<User> {
+  private async userExistenceCheck(email: string): Promise<void> {
     const userExists = await this._userModel.findOne({
-      where: { email: user.email }
+      where: { email: email }
     });
     if (userExists) throw new GenericError('user already exists', 400);
+  } 
+
+  public async create(user: User): Promise<User> {
+    await this.userExistenceCheck(user.email);
     const newUser = await this._userModel.create({ ...user });
     return newUser;
   }
