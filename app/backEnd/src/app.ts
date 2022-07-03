@@ -1,4 +1,5 @@
 import * as express from 'express';
+import userRoutes from './routes/User';
 
 class app {
   public _express: express.Express;
@@ -9,7 +10,9 @@ class app {
     this.routes();
   }
 
-  private routes = (): void => {};
+  private routes = (): void => {
+    this._express.use('/users', userRoutes);
+  };
 
   private middlewares = (): void => {
     this._express.use(express.json());
