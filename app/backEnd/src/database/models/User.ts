@@ -1,5 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import dbConfig from '.';
+import Board from './Board';
 
 class User extends Model {
   id?: string;
@@ -25,5 +26,8 @@ User.init(
     timestamps: false
   }
 );
+
+User.belongsToMany(Board, { through: 'usersBoards', as: 'boards' });
+Board.belongsToMany(User, { through: 'usersBoards', as: 'users' });
 
 export default User;

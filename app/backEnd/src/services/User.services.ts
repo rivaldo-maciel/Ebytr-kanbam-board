@@ -1,6 +1,8 @@
 import GenericError from '../errors/GenericError';
 import User from '../database/models/User';
 import IUserServices from './interfaces/User.interface';
+import Board from '../database/models/Board';
+import Task from '../database/models/Task';
 
 class UserServices implements IUserServices {
   private _userModel: typeof User;
@@ -23,7 +25,7 @@ class UserServices implements IUserServices {
   }
 
   public async getAll(): Promise<User[]> {
-    const users = await this._userModel.findAll();
+    const users = await this._userModel.findAll({ include: [{ model: Board, as: 'boards', include: [{ model: Task }] }] });
     return users;
   }
 

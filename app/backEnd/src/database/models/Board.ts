@@ -1,5 +1,8 @@
 import { Model, DataTypes } from 'sequelize';
 import dbConfig from '.';
+import Task from './Task';
+import User from './User';
+import UserBoard from './UserBoard';
 
 class Board extends Model {
   id?: string;
@@ -19,5 +22,7 @@ Board.init(
     timestamps: false
   }
 );
+
+Board.hasMany(Task);
 
 export default Board;
