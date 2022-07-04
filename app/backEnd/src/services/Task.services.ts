@@ -28,6 +28,7 @@ class TaskServices implements ITaskServices {
   public async update(id: string, task: Task): Promise<Task> {
     const taskToEdit = await this._taskModel.findByPk(id);
     if (!taskToEdit) throw new GenericError('task not found', 404);
+    await this._taskModel.update(task, { where: { id } });
     return { id, ...task } as Task;
   }
 
