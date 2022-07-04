@@ -3,7 +3,7 @@ import GenericError from '../errors/GenericError';
 
 const fileExistenceCheck = (field: string) => {
   if (!field) {
-    throw new GenericError(`${field} is required`, 400);
+    throw new GenericError("all fields is required", 400);
   }
 }
 
