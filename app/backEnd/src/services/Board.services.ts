@@ -1,12 +1,13 @@
 import GenericError from '../errors/GenericError';
 import Board from '../database/models/Board';
 import IBoard from './interfaces/Board.interface';
+import User from '../database/models/User';
 
 class BoardServices implements IBoard {
   private _boardModel: typeof Board;
 
-  constructor(model: typeof Board) {
-    this._boardModel = model;
+  constructor(boardModel: typeof Board) {
+    this._boardModel = boardModel;
   }
 
   public async create(board: Board): Promise<Board> {
