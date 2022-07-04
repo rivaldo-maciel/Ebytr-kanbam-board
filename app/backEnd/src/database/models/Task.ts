@@ -7,6 +7,7 @@ class Task extends Model {
   label: string;
   columnId: string;
   boardId: string;
+  position: string;
 }
 
 Task.init(
@@ -14,7 +15,8 @@ Task.init(
     content: DataTypes.STRING,
     label: DataTypes.STRING,
     columnId: DataTypes.STRING,
-    boardId: DataTypes.STRING
+    boardId: DataTypes.STRING,
+    position: DataTypes.STRING
   },
   {
     sequelize: dbConfig,

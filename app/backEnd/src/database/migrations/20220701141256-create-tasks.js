@@ -25,6 +25,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         field: 'board_id',
         references: { model: 'boards', key: 'id' }
+      },
+      position: {
+        type: Sequelize.INTEGER
       }
     });
   },
