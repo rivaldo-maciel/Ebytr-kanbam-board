@@ -2,7 +2,6 @@ import { Model, DataTypes } from 'sequelize';
 import dbConfig from '.';
 
 class UserBoard extends Model {
-  id?: string;
   userId: string;
   boardId: string;
 }
@@ -20,5 +19,7 @@ UserBoard.init(
     tableName: 'usersBoards'
   }
 );
+
+UserBoard.removeAttribute('id');
 
 export default UserBoard;

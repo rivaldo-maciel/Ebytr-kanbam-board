@@ -47,7 +47,7 @@ class UserBoardServices implements IUserBoardServices {
     const userBoardToEdit = await this._userBoardModel.findByPk(id);
     if (!userBoardToEdit) throw new GenericError('userBoard not found', 404);
     await this._userBoardModel.update(userBoard, { where: { id } });
-    return { id, ...userBoard } as UserBoard;
+    return { ...userBoard } as UserBoard;
   }
 
   public async remove(id: string): Promise<void> {

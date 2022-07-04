@@ -4,6 +4,7 @@ import userRoutes from './routes/User';
 import boardRoutes from './routes/Board';
 import taskRoutes from './routes/Task';
 import taskColumnRoutes from './routes/TaskColumn';
+import userBoardRoutes from './routes/UserBoard';
 
 class app {
   public _express: express.Express;
@@ -20,6 +21,7 @@ class app {
     this._express.use('/boards', boardRoutes);
     this._express.use('/tasks', taskRoutes);
     this._express.use('/taskColumns', taskColumnRoutes);
+    this._express.use('/usersBoards', userBoardRoutes);
   }
 
   private config(): void {
