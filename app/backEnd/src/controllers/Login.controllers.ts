@@ -3,7 +3,7 @@ import ILogin from '../services/interfaces/Login.interface';
 import ILoginControllers from './interfaces/Login.interface';
 import * as jwt from 'jsonwebtoken';
 import { SignOptions } from 'jsonwebtoken';
-import 'dotent/config';
+import 'dotenv/config';
 
 class LoginControllers implements ILoginControllers {
   private _loginServices: ILogin;

@@ -2,7 +2,7 @@ import GenericError from '../errors/GenericError';
 import User from '../database/models/User';
 import ILogin from './interfaces/Login.interface';
 
-class Login implements ILogin {
+class LoginServices implements ILogin {
   private _userModel: typeof User;
 
   constructor(model: typeof User) {
@@ -16,4 +16,4 @@ class Login implements ILogin {
   }
 }
 
-export default Login;
+export default LoginServices;
