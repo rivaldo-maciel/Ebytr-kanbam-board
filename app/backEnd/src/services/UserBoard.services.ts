@@ -23,7 +23,7 @@ class UserBoardServices implements IUserBoardServices {
     const userId = userBoard.userId;
     const boardId = userBoard.boardId;
     const user = await this._userModel.findByPk(userId);
-    const board = await this._userBoardModel.findByPk(boardId);
+    const board = await this._boardModel.findByPk(boardId);
     if (!user) throw new GenericError('user does not exists', 404);
     if (!board) throw new GenericError('board does not exists', 404);
     const createdUserBoard = await this._userBoardModel.create({
