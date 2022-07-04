@@ -14,7 +14,7 @@ class UserServices implements IUserServices {
       where: { email: email }
     });
     if (userExists) throw new GenericError('user already exists', 400);
-  } 
+  }
 
   public async create(user: User): Promise<User> {
     await this.userExistenceCheck(user.email);
@@ -35,7 +35,7 @@ class UserServices implements IUserServices {
 
   public async update(id: string, user: User): Promise<User> {
     await this._userModel.update(user, { where: { id } });
-    return user;
+    return { id, ...user } as User;
   }
 
   public async remove(id: string): Promise<void> {

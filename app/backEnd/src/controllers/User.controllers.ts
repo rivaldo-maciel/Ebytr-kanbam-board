@@ -88,7 +88,7 @@ class UserControllers implements IUserControllers {
     try {
       const { id } = req.params;
       await this._userServices.remove(id);
-      return res.status(200).json();
+      return res.status(200).end();
     } catch (err) {
       next(err);
     }
