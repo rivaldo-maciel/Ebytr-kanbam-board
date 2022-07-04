@@ -9,13 +9,13 @@ class TaskColumn extends Model {
 TaskColumn.init(
   {
     title: DataTypes.STRING,
-    admin: DataTypes.STRING,
   },
   {
     sequelize: dbConfig,
     modelName: 'TaskColumn',
     underscored: true,
-    timestamps: false
+    timestamps: false,
+    tableName: 'taskColumns'
   }
 );
 

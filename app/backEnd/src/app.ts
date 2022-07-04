@@ -3,6 +3,7 @@ import ErrorMiddleware from './middlewares/ErrorMid';
 import userRoutes from './routes/User';
 import boardRoutes from './routes/Board';
 import taskRoutes from './routes/Task';
+import taskColumnRoutes from './routes/TaskColumn';
 
 class app {
   public _express: express.Express;
@@ -18,6 +19,7 @@ class app {
     this._express.use('/users', userRoutes);
     this._express.use('/boards', boardRoutes);
     this._express.use('/tasks', taskRoutes);
+    this._express.use('/taskColumns', taskColumnRoutes);
   }
 
   private config(): void {
