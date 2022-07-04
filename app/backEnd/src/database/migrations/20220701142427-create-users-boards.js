@@ -6,12 +6,16 @@ module.exports = {
       boardId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'boards', key: 'id' }
+        references: { model: 'boards', key: 'id' },
+        primaryKey: true,
+        field: 'board_id'
       },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'users', key: 'id' }
+        references: { model: 'users', key: 'id' },
+        primaryKey: true,
+        field: 'user_id'
       }
     });
   },
