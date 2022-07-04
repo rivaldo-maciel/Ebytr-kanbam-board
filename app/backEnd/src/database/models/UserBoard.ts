@@ -4,6 +4,7 @@ import dbConfig from '.';
 class UserBoard extends Model {
   id?: string;
   userId: string;
+  boardId: string;
 }
 
 UserBoard.init(
