@@ -18,11 +18,16 @@ module.exports = {
       },
       columnId: {
         type: Sequelize.INTEGER,
+        field: 'column_id',
         references: { model: 'taskColumns', key: 'id' }
       },
       boardId: {
         type: Sequelize.INTEGER,
+        field: 'board_id',
         references: { model: 'boards', key: 'id' }
+      },
+      position: {
+        type: Sequelize.INTEGER
       }
     });
   },
