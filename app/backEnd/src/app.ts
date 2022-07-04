@@ -1,6 +1,7 @@
 import * as express from 'express';
 import ErrorMiddleware from './middlewares/ErrorMid';
 import userRoutes from './routes/User';
+import boardRoutes from './routes/Board';
 
 class app {
   public _express: express.Express;
@@ -14,6 +15,7 @@ class app {
 
   private routes(): void {
     this._express.use('/users', userRoutes);
+    this._express.use('/boards', boardRoutes);
   }
 
   private config(): void {

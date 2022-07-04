@@ -23,6 +23,7 @@ class BoardControllers implements IBoardControllers {
       } as Board);
       return res.status(201).json(createdBoard);
     } catch (err) {
+      console.log(err);
       next(err);
     }
   }
@@ -86,3 +87,5 @@ class BoardControllers implements IBoardControllers {
     }
   }
 }
+
+export default BoardControllers;

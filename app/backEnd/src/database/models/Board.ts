@@ -15,6 +15,7 @@ Board.init(
   {
     sequelize: dbConfig,
     modelName: 'Board',
+    underscored: true,
     timestamps: false
   }
 );
