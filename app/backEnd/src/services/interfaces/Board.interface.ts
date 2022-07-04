@@ -1,6 +1,6 @@
 import Board from '../../database/models/Board';
 
-export default interface IBoard {
+export default interface IBoardServices {
   create(model: Board): Promise<Board>;
   getAll(): Promise<Board[]>;
   getById(id: string): Promise<Board>;
