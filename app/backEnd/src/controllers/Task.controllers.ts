@@ -24,6 +24,7 @@ class TaskControllers implements ITaskControllers {
         boardId,
         position
       } as Task);
+      console.log(content);
       return res.status(201).json(createdTask);
     } catch (err) {
       next(err);

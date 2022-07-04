@@ -5,6 +5,13 @@ services:
     container_name: ebytr_backend
     ports:
       - 3001:3001
+    environment:
+      - PORT=3001
+      - DB_USER=root
+      - DB_PASS=123456
+      - DB_HOST=db
+      - DB_NAME=EBYTR_KANBAN
+      - DB_PORT=3306
     platform: linux/x86_64
     restart: 'always'
     volumes:
