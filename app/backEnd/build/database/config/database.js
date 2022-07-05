@@ -2,16 +2,19 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv/config");
 const config = {
-    username: process.env.DB_USER || 'root',
-    password: process.env.DB_PASS || '123456',
-    database: process.env.DB_NAME || 'EBYTR_KANBAN',
-    host: process.env.DB_HOST || 'localhost',
-    port: Number(process.env.DB_PORT) || 3002,
-    dialect: 'mysql',
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT),
+    dialect: 'postgres',
     dialectOptions: {
-        timezone: 'Z',
+        timezone: 'Z'
     },
     logging: false,
+    define: {
+        timestamps: false
+    }
 };
 module.exports = config;
 //# sourceMappingURL=database.js.map

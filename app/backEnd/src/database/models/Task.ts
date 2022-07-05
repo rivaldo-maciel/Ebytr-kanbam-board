@@ -1,5 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import dbConfig from '.';
+import TaskColumn from './TaskColumn';
 
 class Task extends Model {
   id?: string;

@@ -1,0 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const UserBoard_services_1 = require("../services/UserBoard.services");
+const UserBoard_controller_1 = require("../controllers/UserBoard.controller");
+const UserBoard_1 = require("../database/models/UserBoard");
+const User_1 = require("../database/models/User");
+const Board_1 = require("../database/models/Board");
+const UserBoardFieldsExistenceCheck_1 = require("../middlewares/UserBoardFieldsExistenceCheck");
+const routes = (0, express_1.Router)();
+const boardModel = Board_1.default;
+const userModel = User_1.default;
+const userBoardModel = UserBoard_1.default;
+const userBoardServices = new UserBoard_services_1.default(userBoardModel, userModel, boardModel);
+const userBoardController = new UserBoard_controller_1.default(userBoardServices);
+routes.post('/', UserBoardFieldsExistenceCheck_1.default, (req, res, next) => userBoardController.create(req, res, next));
+routes.get('/', (req, res, next) => userBoardController.getAll(req, res, next));
+routes.get('/:id', (req, res, next) => userBoardController.getById(req, res, next));
+routes.put('/:id', UserBoardFieldsExistenceCheck_1.default, (req, res, next) => userBoardController.update(req, res, next));
+routes.delete('/:id', (req, res, next) => userBoardController.remove(req, res, next));
+exports.default = routes;
+//# sourceMappingURL=UserBoard.js.map

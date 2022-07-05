@@ -1,17 +1,22 @@
 import GenericError from '../errors/GenericError';
 import Board from '../database/models/Board';
 import IBoard from './interfaces/Board.interface';
-import User from '../database/models/User';
+import BoardColumn from '../database/models/BoardColumn';
 
 class BoardServices implements IBoard {
   private _boardModel: typeof Board;
+  private _boardColumnModel: typeof BoardColumn;
 
-  constructor(boardModel: typeof Board) {
+  constructor(boardModel: typeof Board, boardColumnModel: typeof BoardColumn) {
     this._boardModel = boardModel;
+    this._boardColumnModel = boardColumnModel;
   }
 
   public async create(board: Board): Promise<Board> {
     const createdBoard = await this._boardModel.create({ ...board });
+    await this._boardColumnModel.create({ boardId: createdBoard.id, columnId: '1' });
+    await this._boardColumnModel.create({ boardId: createdBoard.id, columnId: '2' });
+    await this._boardColumnModel.create({ boardId: createdBoard.id, columnId: '3' });
     return createdBoard;
   }
 

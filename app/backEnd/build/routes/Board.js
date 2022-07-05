@@ -1,0 +1,21 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const Board_services_1 = require("../services/Board.services");
+const Board_controllers_1 = require("../controllers/Board.controllers");
+const Board_1 = require("../database/models/Board");
+const BoardFielsExistenceCheck_1 = require("../middlewares/BoardFielsExistenceCheck");
+const TokenAuth_1 = require("../middlewares/TokenAuth");
+const BoardColumn_1 = require("../database/models/BoardColumn");
+const routes = (0, express_1.Router)();
+const boardColumnModel = BoardColumn_1.default;
+const boardModel = Board_1.default;
+const boardServices = new Board_services_1.default(boardModel, boardColumnModel);
+const boardControllers = new Board_controllers_1.default(boardServices);
+routes.post('/', BoardFielsExistenceCheck_1.default, TokenAuth_1.default, (req, res, next) => boardControllers.create(req, res, next));
+routes.get('/', TokenAuth_1.default, (req, res, next) => boardControllers.getAll(req, res, next));
+routes.get('/:id', TokenAuth_1.default, (req, res, next) => boardControllers.getById(req, res, next));
+routes.put('/:id', TokenAuth_1.default, BoardFielsExistenceCheck_1.default, (req, res, next) => boardControllers.update(req, res, next));
+routes.delete('/:id', TokenAuth_1.default, (req, res, next) => boardControllers.remove(req, res, next));
+exports.default = routes;
+//# sourceMappingURL=Board.js.map

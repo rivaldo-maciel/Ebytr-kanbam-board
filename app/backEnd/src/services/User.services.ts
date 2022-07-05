@@ -3,6 +3,7 @@ import User from '../database/models/User';
 import IUserServices from './interfaces/User.interface';
 import Board from '../database/models/Board';
 import Task from '../database/models/Task';
+import TaskColumn from '../database/models/TaskColumn';
 
 class UserServices implements IUserServices {
   private _userModel: typeof User;
@@ -25,7 +26,22 @@ class UserServices implements IUserServices {
   }
 
   public async getAll(): Promise<User[]> {
-    const users = await this._userModel.findAll({ include: [{ model: Board, as: 'boards', include: [{ model: Task }] }] });
+    const users = await this._userModel.findAll({
+      include: [
+        {
+          model: Board,
+          as: 'boards',
+          attributes: { exclude: ['usersBoards'] },
+          include: [
+            {
+              model: TaskColumn,
+              include: [{ model: Task }],
+              as: 'columns',
+            }
+          ],
+        }
+      ]
+    });
     return users;
   }
 

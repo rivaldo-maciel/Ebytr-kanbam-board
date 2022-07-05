@@ -4,11 +4,13 @@ import BoardControllers from '../controllers/Board.controllers';
 import Board from '../database/models/Board';
 import BoardFieldsExistenceCheck from '../middlewares/BoardFielsExistenceCheck';
 import TokenAuth from '../middlewares/TokenAuth';
+import BoardColumn from '../database/models/BoardColumn';
 
 const routes = Router();
 
+const boardColumnModel = BoardColumn;
 const boardModel = Board;
-const boardServices = new BoardServices(boardModel);
+const boardServices = new BoardServices(boardModel, boardColumnModel);
 const boardControllers = new BoardControllers(boardServices);
 
 routes.post('/', BoardFieldsExistenceCheck, TokenAuth, (req, res, next) => boardControllers.create(req, res, next));

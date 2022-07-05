@@ -19,12 +19,16 @@ module.exports = {
       columnId: {
         type: Sequelize.INTEGER,
         field: 'column_id',
-        references: { model: 'taskColumns', key: 'id' }
+        references: { model: 'taskColumns', key: 'id' },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       boardId: {
         type: Sequelize.INTEGER,
         field: 'board_id',
-        references: { model: 'boards', key: 'id' }
+        references: { model: 'boards', key: 'id' },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       position: {
         type: Sequelize.INTEGER

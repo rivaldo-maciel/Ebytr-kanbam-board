@@ -1,8 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import dbConfig from '.';
 import Task from './Task';
-import User from './User';
-import UserBoard from './UserBoard';
+import TaskColumn from './TaskColumn';
 
 class Board extends Model {
   id?: string;
@@ -24,5 +23,7 @@ Board.init(
 );
 
 Board.hasMany(Task);
+Board.belongsToMany(TaskColumn, { through: 'boardsColumns', foreignKey: 'boardId', as: 'columns' });
+TaskColumn.belongsToMany(Board, { through: 'boardsColumns', foreignKey: 'columnId', as: 'boards' });
 
 export default Board;
