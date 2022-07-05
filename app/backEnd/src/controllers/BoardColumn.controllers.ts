@@ -54,6 +54,7 @@ class BoardColumnControllers implements IBoardColumnControllers {
     try {
       const { id } = req.params;
       await this._boardColumnServices.remove(id);
+      return res.status(200).end();
     } catch (err) {
       next(err);
     }
