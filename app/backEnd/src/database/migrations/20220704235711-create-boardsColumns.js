@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    queryInterface.createTable('usersBoards', {
+  async up (queryInterface, Sequelize) {
+    await queryInterface.createTable('boardsColumns', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,18 +17,18 @@ module.exports = {
         onDelete: 'CASCADE',
         field: 'board_id'
       },
-      userId: {
+      columnId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'users', key: 'id' },
+        references: { model: 'taskColumns', key: 'id' },
         primaryKey: true,
         onDelete: 'CASCADE',
-        field: 'user_id'
+        field: 'column_id'
       }
-    });
+    })
   },
 
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('usersBoards');
+  async down (queryInterface, Sequelize) {
+     await queryInterface.dropTable('boardsColumns');
   }
 };
