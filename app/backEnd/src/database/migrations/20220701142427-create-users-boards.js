@@ -15,6 +15,7 @@ module.exports = {
         references: { model: 'boards', key: 'id' },
         primaryKey: true,
         onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
         field: 'board_id'
       },
       userId: {
@@ -23,6 +24,7 @@ module.exports = {
         references: { model: 'users', key: 'id' },
         primaryKey: true,
         onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
         field: 'user_id'
       }
     });

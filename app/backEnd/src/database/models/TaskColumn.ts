@@ -1,5 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import dbConfig from '.';
+import Task from './Task';
 
 class TaskColumn extends Model {
   id?: string;
@@ -18,5 +19,8 @@ TaskColumn.init(
     tableName: 'taskColumns'
   }
 );
+
+TaskColumn.hasMany(Task, { foreignKey: 'columnId' });
+Task.belongsTo(TaskColumn, { foreignKey: 'columnId' });
 
 export default TaskColumn;

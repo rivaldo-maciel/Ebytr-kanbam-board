@@ -15,6 +15,7 @@ module.exports = {
         references: { model: 'boards', key: 'id' },
         primaryKey: true,
         onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
         field: 'board_id'
       },
       columnId: {
@@ -23,6 +24,7 @@ module.exports = {
         references: { model: 'taskColumns', key: 'id' },
         primaryKey: true,
         onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
         field: 'column_id'
       }
     })
